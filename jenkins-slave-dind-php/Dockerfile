@@ -6,5 +6,3 @@ ENV DOCKER_VERSION=17.06.2 \
     CLAIR_SCANNER_VERSION=v8
 
 RUN apt-get update 
-
-CMD ["java", "-jar", "/bin/swarm-client.jar"]
