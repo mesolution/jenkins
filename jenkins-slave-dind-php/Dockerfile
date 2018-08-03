@@ -1,4 +1,4 @@
-FROM eeacms/jenkins-slave:3.12
+FROM registry-intl.ap-southeast-1.aliyuncs.com/measiagroup/jenkins-slaves:lts
 
 ENV DOCKER_VERSION=17.06.2 \
     DOCKER_COMPOSE_VERSION=1.20.0 \
