@@ -3,10 +3,6 @@
 
 PARAMS=""
 
-JENKINS_USER="jenkins"
-
-JENKINS_PASS="jenkins"
-
 # The Jenkins username for authentication
 if [ ! -z "$JENKINS_USER" ]; then
   PARAMS="$PARAMS -username $JENKINS_USER"
