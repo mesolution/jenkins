@@ -1,4 +1,4 @@
-FROM registry-intl.ap-southeast-1.aliyuncs.com/measiagroup/jenkins-slaves:lts
+FROM mesolutions/jenkins-slave:lts
 
 MAINTAINER TommyKs <sanakonez@live.com>
 
