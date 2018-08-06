@@ -20,7 +20,11 @@ ENV APACHE_CONF_DIR=/etc/apache2 \
 COPY ./app /var/www/app/
 COPY entrypoint.sh /sbin/entrypoint.sh
 
-RUN	apt-get install --no-install-recommends -y $buildDeps \
+RUN	\
+	apt-get install software-properties-common python-software-properties \
+    && add-apt-repository ppa:git-core/ppa \
+    && apt-get update \
+	&& apt-get install --no-install-recommends -y $buildDeps \
 	&& add-apt-repository -y ppa:ondrej/php \
 	&& add-apt-repository -y ppa:ondrej/apache2 \
 	&& add-apt-repository -y ppa:certbot/certbot \
