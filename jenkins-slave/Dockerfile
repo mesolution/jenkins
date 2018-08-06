@@ -41,5 +41,8 @@ COPY docker-entrypoint.sh /
 VOLUME /var/jenkins_home/worker
 WORKDIR /var/jenkins_home/worker
 
+# Standard SSH port
+EXPOSE 22
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["java", "-jar", "/bin/swarm-client.jar"]
