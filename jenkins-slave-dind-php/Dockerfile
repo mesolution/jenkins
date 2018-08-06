@@ -85,7 +85,7 @@ RUN curl -o phpunit.phar https://phar.phpunit.de/phpunit-5.4.6.phar \
   && mv phpunit.phar /usr/local/bin/phpunit \
   && phpunit --version
 
-RUN curl -sS https://getcomposer.org/installer | php -- --version=1.4.1 --install-dir=/usr/local/bin --filename=composer \
+RUN curl -sS https://getcomposer.org/installer | php -- --version=1.4.1 --install-dir=/usr/local/bin --filename=composer
 
 COPY docker-php-ext-* /usr/local/bin/
 
