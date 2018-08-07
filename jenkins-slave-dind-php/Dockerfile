@@ -1,8 +1,3 @@
 FROM mesolutions/jenkins-slave:lts
 
 MAINTAINER TommyKs <sanakonez@live.com>
-
-ENV DOCKER_VERSION=17.06.2
-    DOCKER_COMPOSE_VERSION=1.20.0
-    DOCKER_COMPOSE_MD5=80b6349a390ef3a58250f892fb0cb3c1
-    CLAIR_SCANNER_VERSION=v8
