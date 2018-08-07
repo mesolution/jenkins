@@ -7,12 +7,6 @@ MAINTAINER TommyKs <sanakonez@live.com>
 #    DOCKER_COMPOSE_MD5=80b6349a390ef3a58250f892fb0cb3c1
 #    CLAIR_SCANNER_VERSION=v8
 
-ENV OS_LOCALE="en_US.UTF-8"
-RUN apt-get update && apt-get install -y locales && locale-gen ${OS_LOCALE}
-ENV LANG=${OS_LOCALE}
-    LANGUAGE=en_US:en
-    LC_ALL=${OS_LOCALE}
-
 ENV APACHE_CONF_DIR=/etc/apache2
     PHP_CONF_DIR=/etc/php/7.1
     PHP_DATA_DIR=/var/lib/php
