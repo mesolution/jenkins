@@ -7,44 +7,40 @@ MAINTAINER TommyKs <sanakonez@live.com>
 COPY ./app /var/www/app/
 COPY entrypoint.sh /sbin/entrypoint.sh
 
-RUN	apt-get update && apt-get install python-software-properties
-
-RUN add-apt-repository ppa:ondrej/php
-
 RUN apt-get update -y
 
-RUN	apt-get install -y php7.1
-RUN	apt-get install -y openssl
-RUN	apt-get install -y wget
-RUN	apt-get install -y unzip
-RUN	apt-get install -y nodejs
-RUN	apt-get install -y npm
-RUN	apt-get install -y git
-RUN	apt-get install -y nano
-RUN	apt-get install -y vim
-RUN	apt-get install -y curl
-RUN	apt-get install -y imagemagick
-RUN	apt-get install -y apache2
-RUN	apt-get install -y libapache2-mod-php7.1
-RUN	apt-get install -y libmemcached-dev
-RUN	apt-get install -y php-memcached
-RUN	apt-get install -y php-redis
-RUN	apt-get install -y php7.1-cli
-RUN	apt-get install -y php7.1-readline
-RUN	apt-get install -y php7.1-mbstring
-RUN	apt-get install -y php7.1-zip
-RUN	apt-get install -y php7.1-intl
-RUN	apt-get install -y php7.1-xml
-RUN	apt-get install -y php7.1-json
-RUN	apt-get install -y php7.1-curl
-RUN	apt-get install -y php7.1-mcrypt
-RUN	apt-get install -y php7.1-gd
-RUN	apt-get install -y php7.1-pgsql
-RUN	apt-get install -y php7.1-mysql
-RUN	apt-get install -y php-pear
-RUN	apt-get install -y php7.1-soap
-RUN	apt-get install -y php7.1-intl
-RUN	apt-get install -y php7.1-xdebug
+RUN	apt-get install -qq php7.1
+RUN	apt-get install -qq openssl
+RUN	apt-get install -qq wget
+RUN	apt-get install -qq unzip
+RUN	apt-get install -qq nodejs
+RUN	apt-get install -qq npm
+RUN	apt-get install -qq git
+RUN	apt-get install -qq nano
+RUN	apt-get install -qq vim
+RUN	apt-get install -qq curl
+RUN	apt-get install -qq imagemagick
+RUN	apt-get install -qq apache2
+RUN	apt-get install -qq libapache2-mod-php7.1
+RUN	apt-get install -qq libmemcached-dev
+RUN	apt-get install -qq php-memcached
+RUN	apt-get install -qq php-redis
+RUN	apt-get install -qq php7.1-cli
+RUN	apt-get install -qq php7.1-readline
+RUN	apt-get install -qq php7.1-mbstring
+RUN	apt-get install -qq php7.1-zip
+RUN	apt-get install -qq php7.1-intl
+RUN	apt-get install -qq php7.1-xml
+RUN	apt-get install -qq php7.1-json
+RUN	apt-get install -qq php7.1-curl
+RUN	apt-get install -qq php7.1-mcrypt
+RUN	apt-get install -qq php7.1-gd
+RUN	apt-get install -qq php7.1-pgsql
+RUN	apt-get install -qq php7.1-mysql
+RUN	apt-get install -qq php-pear
+RUN	apt-get install -qq php7.1-soap
+RUN	apt-get install -qq php7.1-intl
+RUN	apt-get install -qq php7.1-xdebug
 
 RUN	apt update
 
