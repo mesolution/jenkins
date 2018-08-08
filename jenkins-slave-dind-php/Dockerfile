@@ -1,3 +1,4 @@
+# jenkins-slave-dind-php
 FROM mesolutions/jenkins-slave:lts
 
 MAINTAINER TommyKs <sanakonez@live.com>
@@ -19,7 +20,6 @@ RUN	apt-get install -y curl
 RUN	apt-get install -y imagemagick
 RUN	apt-get install -y apache2
 RUN	apt-get install -y libmemcached-dev
-RUN	apt-get install -y php-memcached
 RUN	apt-get install -y php-redis
 RUN	apt-get install -y php7.1-cli
 RUN	apt-get install -y php7.1-readline
