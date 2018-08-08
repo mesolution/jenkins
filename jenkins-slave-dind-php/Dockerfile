@@ -8,8 +8,7 @@ COPY ./app /var/www/app/
 COPY entrypoint.sh /sbin/entrypoint.sh
 
 RUN apt-get update -y
-
-RUN	apt-get install -qq php7.1
+RUN apt-get install -y --no-install-recommends php7.1-cli
 RUN	apt-get install -qq openssl
 RUN	apt-get install -qq wget
 RUN	apt-get install -qq unzip
@@ -25,7 +24,6 @@ RUN	apt-get install -qq libapache2-mod-php7.1
 RUN	apt-get install -qq libmemcached-dev
 RUN	apt-get install -qq php-memcached
 RUN	apt-get install -qq php-redis
-RUN	apt-get install -qq php7.1-cli
 RUN	apt-get install -qq php7.1-readline
 RUN	apt-get install -qq php7.1-mbstring
 RUN	apt-get install -qq php7.1-zip
