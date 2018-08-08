@@ -2,31 +2,8 @@ FROM mesolutions/jenkins-slave:lts
 
 MAINTAINER TommyKs <sanakonez@live.com>
 
-# ENV DOCKER_VERSION=17.06.2
-#    DOCKER_COMPOSE_VERSION=1.20.0
-#    DOCKER_COMPOSE_MD5=80b6349a390ef3a58250f892fb0cb3c1
-#    CLAIR_SCANNER_VERSION=v8
-
-ENV APACHE_CONF_DIR=/etc/apache2
-    PHP_CONF_DIR=/etc/php/7.1
-    PHP_DATA_DIR=/var/lib/php
-
 COPY ./app /var/www/app/
 COPY entrypoint.sh /sbin/entrypoint.sh
-
-# RUN apt-get install software-properties-common python-software-properties
-
-# RUN	add-apt-repository ppa:git-core/ppa
-
-# RUN	apt-get update
-
-# RUN	apt-get install --no-install-recommends -y $buildDeps
-
-# RUN	add-apt-repository -y ppa:ondrej/php
-
-# RUN	add-apt-repository -y ppa:ondrej/apache2
-
-# RUN	add-apt-repository -y ppa:certbot/certbot
 
 RUN	apt-get update
 
@@ -37,17 +14,15 @@ RUN	apt update
 RUN	apt install php7.1-bcmath
 
 # Apache settings
-RUN	cp /dev/null ${APACHE_CONF_DIR}/conf-available/other-vhosts-access-log.conf
+RUN	cp /dev/null /etc/apache2/conf-available/other-vhosts-access-log.conf
 
-RUN rm ${APACHE_CONF_DIR}/sites-enabled/000-default.conf ${APACHE_CONF_DIR}/sites-available/000-default.conf
+RUN rm /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 RUN a2enmod rewrite php7.1
 # PHP settings
 RUN phpenmod mcrypt
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --version=1.4.1 --install-dir=/usr/local/bin --filename=composer
-# Cleaning
-# RUN apt-get purge -y --auto-remove $buildDeps locales
 
 RUN apt-get autoremove -y
 
@@ -59,13 +34,13 @@ RUN ln -sf /dev/stderr /var/log/apache2/error.log
 
 RUN chmod 755 /sbin/entrypoint.sh
 
-RUN chown www-data:www-data ${PHP_DATA_DIR} -Rf
+RUN chown www-data:www-data /var/lib/php -Rf
 
-COPY ./configs/apache2.conf ${APACHE_CONF_DIR}/apache2.conf
+COPY ./configs/apache2.conf /etc/apache2/apache2.conf
 
-COPY ./configs/app.conf ${APACHE_CONF_DIR}/sites-enabled/app.conf
+COPY ./configs/app.conf /etc/apache2/sites-enabled/app.conf
 
-COPY ./configs/php.ini  ${PHP_CONF_DIR}/apache2/conf.d/custom.ini
+COPY ./configs/php.ini  /etc/php/7.1/apache2/conf.d/custom.ini
 
 RUN cd /tmp
 
