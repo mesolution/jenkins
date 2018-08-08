@@ -18,7 +18,6 @@ RUN	apt-get install -y vim
 RUN	apt-get install -y curl
 RUN	apt-get install -y imagemagick
 RUN	apt-get install -y apache2
-RUN	apt-get install -y libapache2-mod-php7.1
 RUN	apt-get install -y libmemcached-dev
 RUN	apt-get install -y php-memcached
 RUN	apt-get install -y php-redis
