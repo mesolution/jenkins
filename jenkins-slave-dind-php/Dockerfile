@@ -1,4 +1,5 @@
-# jenkins-slave-dind-php
+#jenkins-slave-dind-php
+
 FROM mesolutions/jenkins-slave:lts
 
 MAINTAINER TommyKs <sanakonez@live.com>
@@ -6,8 +7,13 @@ MAINTAINER TommyKs <sanakonez@live.com>
 COPY ./app /var/www/app/
 COPY entrypoint.sh /sbin/entrypoint.sh
 
-RUN	apt-get update
+RUN	apt-get update && apt-get install python-software-properties
 
+RUN add-apt-repository ppa:ondrej/php
+
+RUN apt-get update -y
+
+RUN	apt-get install -y php7.1
 RUN	apt-get install -y openssl
 RUN	apt-get install -y wget
 RUN	apt-get install -y unzip
@@ -19,7 +25,9 @@ RUN	apt-get install -y vim
 RUN	apt-get install -y curl
 RUN	apt-get install -y imagemagick
 RUN	apt-get install -y apache2
+RUN	apt-get install -y libapache2-mod-php7.1
 RUN	apt-get install -y libmemcached-dev
+RUN	apt-get install -y php-memcached
 RUN	apt-get install -y php-redis
 RUN	apt-get install -y php7.1-cli
 RUN	apt-get install -y php7.1-readline
