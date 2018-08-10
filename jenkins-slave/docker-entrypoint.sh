@@ -2,7 +2,8 @@
 
 
 PARAMS=""
-
+JENKINS_USER="root"
+JENKINS_PASS="123"
 # The Jenkins username for authentication
 if [ ! -z "$JENKINS_USER" ]; then
   PARAMS="$PARAMS -username $JENKINS_USER"
