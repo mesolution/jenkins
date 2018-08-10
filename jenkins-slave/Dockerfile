@@ -1,6 +1,6 @@
+#jenkins-slave
 FROM java:openjdk-8
 
-#jenkins-slave
 ENV GOSU_VERSION=1.10 \
     SWARM_VERSION=3.12 \
     MD5=49c49893fd188b2f34afd9f7a2332f6c \
@@ -36,6 +36,8 @@ RUN mkdir -p /var/jenkins_home \
  && useradd -d /var/jenkins_home/worker -u 1000 -m -s /bin/bash jenkins \
  && curl -o /bin/swarm-client.jar -SL https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$SWARM_VERSION/swarm-client-$SWARM_VERSION.jar \
  && echo "$MD5  /bin/swarm-client.jar" | md5sum -c -
+
+RUN service ssh start
 
 COPY docker-entrypoint.sh /
 
