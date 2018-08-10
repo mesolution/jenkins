@@ -1,5 +1,6 @@
 FROM java:openjdk-8
 
+#jenkins-slave
 ENV GOSU_VERSION=1.10 \
     SWARM_VERSION=3.12 \
     MD5=49c49893fd188b2f34afd9f7a2332f6c \
@@ -9,7 +10,7 @@ ENV GOSU_VERSION=1.10 \
 
 # grab gosu for easy step-down from root
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ca-certificates wget bzip2 python \
+ && apt-get install -y --no-install-recommends ca-certificates wget bzip2 python openssh-server openssh-client \
  && rm -rf /var/lib/apt/lists/* \
  && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
  && wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture).asc" \
