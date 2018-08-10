@@ -77,15 +77,8 @@ COPY ./configs/app.conf /etc/apache2/sites-enabled/app.conf
 
 COPY ./configs/php.ini  /etc/php/7.1/apache2/conf.d/custom.ini
 
-RUN cd /tmp
 
-RUN curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
-
-RUN tar -xvvzf ioncube.tar.gz
-
-RUN cp -rf ioncube/ioncube_loader_lin_7.1.so /usr/lib/php/20160303/
-
-RUN rm -Rf ioncube.tar.gz ioncube
+RUN cd /tmp && curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz && tar -xvvzf ioncube.tar.gz && cp -rf ioncube/ioncube_loader_lin_7.1.so /usr/lib/php/20160303/ && rm -Rf ioncube.tar.gz ioncube
 
 RUN echo "zend_extension=ioncube_loader_lin_7.1.so" > /etc/php/7.1/apache2/conf.d/00-ioncube_loader_lin_7.1.ini
 
