@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y locales && locale-gen "en_US.UTF-8" \
  && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" \
  && apt-get update \
  && apt-get install -y --no-install-recommends docker-ce=$DOCKER_VERSION* \
+ && apt-get install openssh-server openssh-client \
  && rm -rf /var/lib/apt/lists/* \
  && curl -o /bin/docker-compose -SL https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-Linux-x86_64 \
  && echo "$DOCKER_COMPOSE_MD5  /bin/docker-compose" | md5sum -c - \
@@ -105,6 +106,8 @@ COPY ./configs/php.ini  /etc/php/7.1/apache2/conf.d/custom.ini
 RUN cd /tmp && curl -o ioncube.tar.gz http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz && tar -xvvzf ioncube.tar.gz && cp -rf ioncube/ioncube_loader_lin_7.1.so /usr/lib/php/20160303/ && rm -Rf ioncube.tar.gz ioncube
 
 RUN echo "zend_extension=ioncube_loader_lin_7.1.so" > /etc/php/7.1/apache2/conf.d/00-ioncube_loader_lin_7.1.ini
+
+RUN service ssh start && echo "jenkins:123" | chpasswd
 
 WORKDIR /var/www/app/
 

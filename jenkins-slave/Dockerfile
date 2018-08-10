@@ -37,7 +37,7 @@ RUN mkdir -p /var/jenkins_home \
  && curl -o /bin/swarm-client.jar -SL https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/$SWARM_VERSION/swarm-client-$SWARM_VERSION.jar \
  && echo "$MD5  /bin/swarm-client.jar" | md5sum -c -
 
-RUN service ssh start
+RUN service ssh start && echo "jenkins:123" | chpasswd
 
 COPY docker-entrypoint.sh /
 
